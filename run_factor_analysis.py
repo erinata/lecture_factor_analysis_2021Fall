@@ -38,11 +38,18 @@ print(output)
 
 machine = FactorAnalyzer(n_factors=5, rotation='varimax')
 machine.fit(dataset)
-output = machine.loadings_
+loadings = machine.loadings_
 
-print("\nresult:\n")
-print(output)
+print("\nfactor loadings:\n")
+print(loadings)
 print(machine.get_factor_variance())
+
+dataset = dataset.values
+
+result = numpy.dot(dataset, loadings)
+
+print(result)
+print(result.shape)
 
 
 
